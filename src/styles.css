@@ -1,0 +1,208 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-crimson: var(--crimson);
+  --color-crimson-foreground: var(--crimson-foreground);
+  --color-surface: var(--surface);
+  --font-display: "Anton", "Archivo Black", sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-script: "Playfair Display", serif;
+}
+
+:root {
+  --radius: 0.875rem;
+  /* MAPS shield palette: royal blue + crimson red + gold */
+  --background: oklch(0.985 0.004 260);
+  --foreground: oklch(0.21 0.07 268);
+  --surface: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.07 268);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.07 268);
+  --primary: oklch(0.44 0.17 268);
+  --primary-foreground: oklch(0.99 0.005 260);
+  --secondary: oklch(0.955 0.015 262);
+  --secondary-foreground: oklch(0.3 0.1 268);
+  --muted: oklch(0.955 0.012 262);
+  --muted-foreground: oklch(0.5 0.035 265);
+  --accent: oklch(0.94 0.03 262);
+  --accent-foreground: oklch(0.3 0.1 268);
+  --crimson: oklch(0.58 0.22 27);
+  --crimson-foreground: oklch(0.99 0.005 260);
+  --gold: oklch(0.81 0.16 84);
+  --gold-foreground: oklch(0.22 0.06 268);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0.005 260);
+  --border: oklch(0.9 0.015 262);
+  --input: oklch(0.9 0.015 262);
+  --ring: oklch(0.44 0.17 268);
+
+  --gradient-royal: linear-gradient(135deg, oklch(0.34 0.16 270), oklch(0.5 0.18 265));
+  --gradient-gold: linear-gradient(120deg, oklch(0.74 0.15 62), oklch(0.87 0.15 92));
+  --gradient-shield: linear-gradient(
+    135deg,
+    oklch(0.44 0.17 268) 0%,
+    oklch(0.44 0.17 268) 48%,
+    oklch(0.58 0.22 27) 48%,
+    oklch(0.58 0.22 27) 100%
+  );
+  --shadow-elevated: 0 24px 60px -24px color-mix(in oklab, oklch(0.34 0.16 270) 45%, transparent);
+  --shadow-gold: 0 0 0 1px color-mix(in oklab, var(--gold) 45%, transparent),
+    0 18px 45px -20px color-mix(in oklab, var(--gold) 65%, transparent);
+}
+
+.dark {
+  --background: oklch(0.16 0.035 268);
+  --foreground: oklch(0.97 0.008 260);
+  --surface: oklch(0.21 0.045 268);
+  --card: oklch(0.21 0.045 268);
+  --card-foreground: oklch(0.97 0.008 260);
+  --popover: oklch(0.21 0.045 268);
+  --popover-foreground: oklch(0.97 0.008 260);
+  --primary: oklch(0.68 0.16 266);
+  --primary-foreground: oklch(0.15 0.04 268);
+  --secondary: oklch(0.27 0.05 268);
+  --secondary-foreground: oklch(0.97 0.008 260);
+  --muted: oklch(0.26 0.045 268);
+  --muted-foreground: oklch(0.72 0.03 265);
+  --accent: oklch(0.3 0.06 268);
+  --accent-foreground: oklch(0.97 0.008 260);
+  --crimson: oklch(0.65 0.2 27);
+  --crimson-foreground: oklch(0.99 0.005 260);
+  --gold: oklch(0.84 0.15 86);
+  --gold-foreground: oklch(0.17 0.04 268);
+  --destructive: oklch(0.65 0.2 27);
+  --destructive-foreground: oklch(0.99 0.005 260);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.68 0.16 266);
+
+  --gradient-royal: linear-gradient(135deg, oklch(0.24 0.09 270), oklch(0.34 0.13 265));
+  --shadow-elevated: 0 24px 60px -24px oklch(0 0 0 / 60%);
+}
+
+@utility bg-royal {
+  background-image: var(--gradient-royal);
+}
+
+@utility bg-goldish {
+  background-image: var(--gradient-gold);
+}
+
+@utility text-gradient-gold {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility glow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility card-tilt {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-8px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@utility shine {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: shine-sweep 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes shine-sweep {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+}
