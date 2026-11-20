@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
 import { Reveal, SectionHeading } from "./Motion";
 import { CONTACT } from "@/data/site";
+import { sendEnquiry } from "@/lib/send-enquiry";
 
 const COURSE_OPTIONS = [
   "Foundation (5th – 10th)",
@@ -18,11 +20,33 @@ const MODES = ["Online", "Offline", "Hybrid"] as const;
 export function Enquiry() {
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
   const [mode, setMode] = useState<(typeof MODES)[number]>("Offline");
+  const [errorMessage, setErrorMessage] = useState("");
+  const sendEnquiryFn = useServerFn(sendEnquiry);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setState("sending");
-    setTimeout(() => setState("done"), 900);
+    setErrorMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    try {
+      await sendEnquiryFn({
+        data: {
+          fullName: String(formData.get("name") ?? ""),
+          contact: String(formData.get("phone") ?? ""),
+          email: String(formData.get("email") ?? ""),
+          course: String(formData.get("course") ?? ""),
+          mode,
+          message: String(formData.get("message") ?? ""),
+        },
+      });
+      setState("done");
+    } catch {
+      setState("idle");
+      setErrorMessage(
+        "We couldn't send your enquiry. Please try again or contact us by phone or email.",
+      );
+    }
   };
 
   return (
@@ -107,9 +131,18 @@ export function Enquiry() {
                     <input
                       required
                       type="tel"
-                      pattern="[0-9+ ]{10,15}"
+                      pattern="[0-9+() -]{10,18}"
                       name="phone"
                       placeholder="+91 XXXXX XXXXX"
+                      className="w-full rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-gold focus:bg-white/15"
+                    />
+                  </Field>
+                  <Field label="Email">
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
                       className="w-full rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-gold focus:bg-white/15"
                     />
                   </Field>
@@ -141,6 +174,20 @@ export function Enquiry() {
                       ))}
                     </div>
                   </Field>
+                  <Field label="Message (optional)">
+                    <textarea
+                      name="message"
+                      maxLength={2000}
+                      rows={3}
+                      placeholder="Anything else you'd like us to know?"
+                      className="w-full resize-y rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-gold focus:bg-white/15"
+                    />
+                  </Field>
+                  {errorMessage && (
+                    <p role="alert" className="text-sm font-semibold text-red-200">
+                      {errorMessage}
+                    </p>
+                  )}
                   <button
                     type="submit"
                     disabled={state === "sending"}

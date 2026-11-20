@@ -21,6 +21,21 @@ npm i
 npm run dev
 ```
 
+## Enquiry email
+
+Copy `.env.example` to `.env.local` and set `SMTP_PASS` to the rotated SMTP
+password. The enquiry form sends mail on the server and requires these
+environment variables:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+
+In Vercel, add the same variables under **Project Settings → Environment
+Variables** for each environment you deploy. Do not expose SMTP credentials as
+`VITE_*` variables or commit them to source control.
+
 ## Built with
 
 - TanStack Start
