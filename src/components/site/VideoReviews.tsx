@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Play, Quote, X } from "lucide-react";
 import { REVIEWS } from "@/data/site";
-import posterThumb from "@/assets/poster-3results.asset.json";
+import posterThumb from "@/assets/poster-3results.jpeg";
 import { Reveal, SectionHeading } from "./Motion";
 
 export function VideoReviews() {
@@ -26,7 +26,7 @@ export function VideoReviews() {
               className="group relative block w-full overflow-hidden rounded-3xl border-2 border-gold/60 glow-gold"
             >
               <img
-                src={posterThumb.url}
+                src={posterThumb}
                 alt="MAPS Educare student review video thumbnail"
                 loading="lazy"
                 className="aspect-16/10 w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"

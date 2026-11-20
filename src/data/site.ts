@@ -1,14 +1,13 @@
-import logo from "@/assets/MapsLogo.png.asset.json";
-import posterCetChampions from "@/assets/poster-cet-champions.asset.json";
-import posterCetToppers from "@/assets/poster-cet-toppers.asset.json";
-import posterIitMadras from "@/assets/poster-iit-madras.asset.json";
-import posterJeeAdv from "@/assets/poster-jee-adv-643.asset.json";
-import posterNeet581 from "@/assets/poster-neet-581.asset.json";
-import posterNeetBio from "@/assets/poster-neet-bio-air1.asset.json";
-import posterNest266 from "@/assets/poster-nest-266.asset.json";
-import poster3Results from "@/assets/poster-3results.asset.json";
+import logo from "@/assets/MapsLogo.png";
+import posterCetChampions from "@/assets/poster-cet-champions.jpg";
+import posterIitMadras from "@/assets/poster-iit-madras.jpg";
+import posterJeeAdv from "@/assets/poster-jee-adv-643.jpg";
+import posterNeet581 from "@/assets/poster-neet-581.jpeg";
+import posterNeetBio from "@/assets/poster-neet-bio-air1.jpeg";
+import posterNest266 from "@/assets/poster-nest-266.jpeg";
+import poster3Results from "@/assets/poster-3results.jpeg";
 
-export const LOGO_URL = logo.url;
+export const LOGO_URL = logo;
 
 export const CONTACT = {
   phone: "+91 96996 74371",
@@ -41,56 +40,56 @@ export type Poster = {
 export const POSTERS: Poster[] = [
   {
     id: "iit-madras",
-    url: posterIitMadras.url,
+    url: posterIitMadras,
     title: "Pravin Salvi — AIR 643",
     caption: "Selected in IIT Madras (Aerospace Engineering), JEE Advanced 2026",
     exams: ["JEE Advanced"],
   },
   {
     id: "jee-adv",
-    url: posterJeeAdv.url,
+    url: posterJeeAdv,
     title: "JEE Advanced 2026 — AIR 643",
     caption: "Pravin Salvi, first IIT selection from Nallasopara (W)",
     exams: ["JEE Advanced"],
   },
   {
     id: "cet-champions",
-    url: posterCetChampions.url,
+    url: posterCetChampions,
     title: "MHT-CET 2026 Shining Champions",
     caption: "15 toppers above 91 %ile, led by 99.30 %ile",
     exams: ["MHT-CET"],
   },
   {
     id: "cet-toppers",
-    url: posterCetToppers.url,
+    url: posterCetChampions,
     title: "MHT-CET 2026 Top 6",
     caption: "Pravin, Lakshya, Suraj, Aastha, Sakshi & Harsh",
     exams: ["MHT-CET"],
   },
   {
     id: "neet-bio",
-    url: posterNeetBio.url,
+    url: posterNeetBio,
     title: "Harsh Singh — AIR 1 in Biology",
     caption: "NEET 2026, perfect Biology score of 360/360",
     exams: ["NEET"],
   },
   {
     id: "neet-581",
-    url: posterNeet581.url,
+    url: posterNeet581,
     title: "Harsh Singh — 581/720",
     caption: "NEET 2026 outstanding score with 360/360 in Biology",
     exams: ["NEET"],
   },
   {
     id: "nest-266",
-    url: posterNest266.url,
+    url: posterNest266,
     title: "Harsh Singh — NEST AIR 266",
     caption: "NEST 2026 All India Rank 266",
     exams: ["NEST"],
   },
   {
     id: "three-results",
-    url: poster3Results.url,
+    url: poster3Results,
     title: "3 Results, 1 Dream",
     caption: "JEE Mains 94.60 %ile · NEET 581/720 · NEST AIR 266",
     exams: ["JEE Main", "NEET", "NEST"],
